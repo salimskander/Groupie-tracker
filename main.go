@@ -2,14 +2,23 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Hello, World!</h1>")
+	tmp, err := template.ParseFiles("./HTML/index.html")
+	if err != nil {
+		panic(err)
+	}
+
+	tmp.Execute(w, nil)
 }
 
 func main() {
 	http.HandleFunc("/", handler)
+
+	fmt.Println("server started at http://localhost:8000")
+
 	http.ListenAndServe(":8000", nil)
 }

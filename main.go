@@ -6,24 +6,32 @@ import (
 	"net/http"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Hello, World!</h1>")
-	if r.URL.Path != "/" {
-		http.Error(w, "404 not found.", http.StatusNotFound)
+const port = ":8000"
+
+func GestionHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/Gestion" {
+		http.Error(w, "404 non reconnus", http.StatusNotFound)
+		return
+	}
+	if r.Method != "GET" {
+		http.Error(w, "Methode non supportée", http.StatusNotFound)
 		return
 	}
 
-	if r.Method != "GET" {
-		http.Error(w, "Method not supported.", http.StatusNotFound)
-		return
-	}
-	fmt.Printf("Everything is good\n")
+	fmt.Printf("Serveur opérationnel")
+
 }
 
 func main() {
-	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8000", nil)
-	if err := http.ListenAndServe(":8000", nil); err != nil {
+
+	fileServer := http.FileServer(http.Dir("./Static/HTML/"))
+	http.Handle("/", fileServer)
+
+	http.HandleFunc("/Gestion", GestionHandler)
+
+	fmt.Println("(http://localhost:8000/) - Serveur lancé sur le port", port)
+	if err := http.ListenAndServe(port, nil); err != nil {
 		log.Fatal(err)
 	}
+
 }

@@ -22,8 +22,8 @@ func GestionHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	fileServer := http.FileServer(http.Dir("./Static/HTML/"))
-	http.Handle("/", fileServer)
+	fs := http.FileServer(http.Dir("Static/HTML/"))
+	http.Handle("/Static/CSS/", http.StripPrefix("/Static/CSS/", fs))
 	http.HandleFunc("/Gestion", GestionHandler)
 	http.HandleFunc("/", controler.RecupApi)
 	fmt.Println("(http://localhost:80/) - Serveur lancé sur le port", port)

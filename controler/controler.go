@@ -38,8 +38,7 @@ func RecupApi(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.Unmarshal(responseData, &groupe)
-	fmt.Println(groupe)
-	t, err := template.ParseFiles("./Static/HTML/index.html")
+	t, err := template.ParseFiles("./Static/HTML/artiste.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -49,7 +48,7 @@ func RecupApi(w http.ResponseWriter, r *http.Request) {
 }
 
 func RenderHTML(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("./HTML/index.html")
+	t, err := template.ParseFiles("./HTML/artiste.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

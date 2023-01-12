@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const port = ":8000"
+const port = ":80"
 
 func GestionHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/Gestion" {

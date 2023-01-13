@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>Groupie-tracker</title>
+        <link rel="stylesheet" href="/Static/CSS/stylesArtiste.css">
+  </head>
+  <body>
+    <h1>Bienvenue sur Groupie-tracker</h1>
+    {{ range $artist := . }}
+    <p> {{ $artist.Id_groupe }} </p>
+    <p> {{ $artist.Nom_du_groupe }} </p>
+    <p> {{ $artist.Creation }} </p>
+    <p> {{ $artist.PremierAlbum }} </p>
+    <p> {{ $artist.Membres }} </p>
+    {{ end }}
+  </body> 
+</html>

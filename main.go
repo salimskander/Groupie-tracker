@@ -25,7 +25,7 @@ func main() {
 	fs := http.FileServer(http.Dir("Static/HTML/"))
 	http.Handle("/Static/CSS/", http.StripPrefix("/Static/CSS/", fs))
 	http.HandleFunc("/Gestion", GestionHandler)
-	http.HandleFunc("/", controler.RecupApi)
+	http.HandleFunc("/", controler.HomePage)
 	fmt.Println("(http://localhost:80/) - Serveur lancé sur le port", port)
 	if err := http.ListenAndServe(port, nil); err != nil {
 		log.Fatal(err)

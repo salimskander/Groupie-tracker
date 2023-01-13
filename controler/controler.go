@@ -21,7 +21,7 @@ type Artists struct {
 
 var groupe []Artists
 
-func RecupApi(w http.ResponseWriter, r *http.Request) {
+func HomePage(w http.ResponseWriter, r *http.Request) {
 
 	// ici on récupère l'API
 	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")

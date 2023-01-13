@@ -1,0 +1,54 @@
+<div class="container">
+  <ul class="cards">
+    <li class="card cards__item">
+      <div class="card__frame">
+        <div class="card__picture">
+          <img src="https://groupietrackers.herokuapp.com/api/images/queen.jpeg" alt="" width="120">
+        </div>
+        <h2 class="card__title">Queen</h2>
+      </div>
+      <div class="card__overlay"></div>
+      <div class="card__content">
+        <h2>Date de creation</h2>
+        <p>1970<p>
+        <h2>Members</h2>
+        <p>Freddie Mercury, Brian May, John Daecon, Roger Meddows-Taylor, Mike Grose, Barry Mitchell, Doug Fogie</p>
+      </div>
+    </li>
+    <li class="card cards__item">
+      <div class="card__frame">
+        <div class="card__picture">
+          <img src="https://image.flaticon.com/icons/svg/1336/1336494.svg" alt="" width="120">
+        </div>
+        <h2 class="card__title">Soja</h2>
+      </div>
+      <div class="card__overlay"></div>
+      <div class="card__content">
+        <h2>Date de creation</h2>
+        <p>1997<p>
+        <h2>Members</h2>
+        <p>"Jacob Hemphill",
+      "Bob Jefferson",
+      "Ryan \"Byrd\" Berty",
+      "Ken Brownell",
+      "Patrick O'Shea",
+      "Hellman Escorcia",
+      "Rafael Rodriguez",
+      "Trevor Young"</p>
+      </div>
+    </li>
+    <li class="card cards__item">
+      <div class="card__frame">
+        <div class="card__picture">
+          <img src="https://image.flaticon.com/icons/svg/478/478543.svg" alt="" width="120">
+        </div>
+        <h2 class="card__title">Launch</h2>
+      </div>
+      <div class="card__overlay"></div>
+      <div class="card__content">
+        <h2>Launch</h2>
+        <p>Asperiores, harum dignissimos at neque quaerat, excepturi, ipsa in consectetur blanditiis tempore error! Libero fuga possimus qui saepe temporibus praesentium, ut ratione facere rem distinctio, beatae omnis officiis illum animi.</p>
+      </div>
+    </li>
+  </ul>
+</div>

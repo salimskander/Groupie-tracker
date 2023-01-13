@@ -5,6 +5,7 @@
   --secondary-color: #013328;
   --text-color: #100c0d;
   --background-color: #ecf2f1;
+
 }
 
 /* Appliquer la couleur de base aux liens */
@@ -31,8 +32,6 @@ p {
   line-height: 1.5;
   color: var(--text-color);
 }
-  
-  
   
   
   

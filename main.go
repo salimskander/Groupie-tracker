@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-const port = ":80"
+const port = ":8080"
 
 func GestionHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/Gestion" {
@@ -26,7 +26,7 @@ func main() {
 	http.Handle("/Static/CSS/", http.StripPrefix("/Static/CSS/", fs))
 	http.HandleFunc("/Gestion", GestionHandler)
 	http.HandleFunc("/", controler.HomePage)
-	fmt.Println("(http://localhost:80/) - Serveur lancé sur le port", port)
+	fmt.Println("(http://localhost:8080/) - Serveur lancé sur le port", port)
 	if err := http.ListenAndServe(port, nil); err != nil {
 		log.Fatal(err)
 		fmt.Println("Fatal error serveur ne se lance pas")

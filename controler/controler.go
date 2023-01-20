@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"text/template"
 )
@@ -23,13 +24,13 @@ type Artists struct {
 	Image         string   `json:"image"`
 	Nom_du_groupe string   `json:"name"`
 	Membres       []string `json:"members"`
-	Creation      string   `json:"creationDate"`
+	Creation      int      `json:"creationDate"`
 	PremierAlbum  string   `json:"firstAlbum"`
 	Locations     []string `json:"locations"`
 	Dates         []string `json:"dates"`
 }
 
-var groupe []Artists
+var artist Artists
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// ici on récupère l'API
@@ -62,19 +63,15 @@ func RenderHTML(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	t.Execute(w, groupe)
+	t.Execute(w, home)
 }
 
-func Artistes(w http.ResponseWriter, r *http.Request) {
-	// On définit un chemin précis pour différencier tout le monde
-	if r.URL.Path != "/Artiste" {
-		http.Error(w, "404 not found", http.StatusNotFound)
-		fmt.Println("404 link not found")
-		return
-	}
+func Artiste(w http.ResponseWriter, r *http.Request) {
 
-	// On récupère l'id pour la fonction de search
+	// On récupère l'id
 	id := r.URL.Query().Get("id")
+
+	//if !id -> redirect
 
 	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists/" + id)
 
@@ -93,12 +90,10 @@ func Artistes(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// autrechoses = 1 Artiste
-	var autrechoses Artists
 
-	json.Unmarshal(responseData, &autrechoses)
-	w.Header().Add("Content-Type", "application/json")
-	w.Write(responseData)
-
+	json.Unmarshal(responseData, &artist)
+	fmt.Println(responseData)
+	fmt.Println(&artist)
 	custTemplate, err := template.ParseFiles("./Static/HTML/artiste.html")
 
 	if err != nil {
@@ -107,6 +102,30 @@ func Artistes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = custTemplate.Execute(w, var autrechose)
+	custTemplate.Execute(w, &artist)
+
+}
+
+func Recherche(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/Recherche" {
+		http.Error(w, "404 not found", http.StatusNotFound)
+		fmt.Println("404 link not found")
+		return
+	}
+
+	u, err := url.Parse(r.URL.String())
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	params := u.Query()
+	id := params.Get("id")
+	page := params.Get("/artists/" + id)
+	if page == "" {
+		page = "1"
+	}
+
+	fmt.Println("Artiste : ", page)
 
 }

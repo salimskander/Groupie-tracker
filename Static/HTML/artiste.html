@@ -8,61 +8,15 @@
   <link rel="stylesheet" href="Static/CSS/stylesArtiste.css">
 </head>
 <body>
-  <header>
-    
-    <div class="container">
-      <h1>Groupie-tracker</h1>
-      <nav>
-        <ul>
-          <li><a href="https://groupietrackers.herokuapp.com/api/artists/1">Artistes1</a></li>
-          <li><a href="https://groupietrackers.herokuapp.com/api/locations">Locations</a></li>
-          <li><a href="https://groupietrackers.herokuapp.com/api/dates">Dates</a></li>
-          <li><a href="https://groupietrackers.herokuapp.com/api/relation">Relations</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
   <main>
-    <section class="intro">
-      <div class="container">
-        <h2>Bienvenue sur notre site</h2>
-        <p>ce site reference vos artistes et sons preferés.</p>
-      </div>
-    </section>
-<<<<<<< HEAD
-    <section class="services">
-      <div class="container">
-        <h2>Groupes et artistes</h2>
-        <div class="services-list">
-          <div class="service">
-            <img src="https://groupietrackers.herokuapp.com/api/images/queen.jpeg" alt="Queen">
-            <h3>Queen</h3>
-            <p>contenu service 1</p>
-          </div>
-          <div class="service">
-            <img src="https://groupietrackers.herokuapp.com/api/images/soja.jpeg" alt="Soja">
-            <h3>Soja</h3>
-            <p>contenu du deuxieme service.</p>
-          </div>
-          <div class="service">
-            <img src="https://groupietrackers.herokuapp.com/api/images/pinkfloyd.jpeg" alt="Pink Floyd">
-            <h3>Pink Floyd</h3>
-            <p>contenu du service numero 3.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  <body>
-    <h1>Bienvenue sur Groupie-tracker</h1>
-=======
->>>>>>> e64777bf883a9ad0ac881d02b26cfb9226a4575f
-    {{ range $artist := . }}
-    <p> {{ $artist.Id_groupe }} </p>
-    <p> {{ $artist.Nom_du_groupe }} </p>
-    <p> {{ $artist.Creation }} </p>
-    <p> {{ $artist.PremierAlbum }} </p>
-    <p> {{ $artist.Membres }} </p>
-    {{ end }}
-  </body> 
+<h1>Découvrez l'artiste ! </h1>
+    {{ .Image }}
+    {{ .Nom_du_groupe }}
+    {{ .Creation }}
+    {{ .PremierAlbum }}
+    {{ range $Membre := .Membres }}
+    {{ $Membre}}
+    {{ end }}  
+    </main>  
 </html>
 

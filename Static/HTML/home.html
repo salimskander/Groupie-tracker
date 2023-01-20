@@ -6,23 +6,24 @@
   </head>
   <body>
     <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
-    <style>
-      .button {
-        background-color: #000000;
-        color: white;
-        padding: 14px 28px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-        border-radius: 15%;
-        position: absolute;
-        bottom: 10%;
-        right: 10%;
-      }
-    </style>
-    <form action="localhost:8080/Artistes" >
-      <button type="submit" class="button">Artistes</button>
+      <header>
+        <a class="logo" href="/artiste">artiste</a>
+        <form action="/search" method="GET">
+          <input
+            autofocus
+            class="search-input"
+            value=""
+            placeholder="Rechercher"
+            type="search"
+            name="q"
+          />
+        </form>
+      </header>
+      <form>
+      {{ range $homepage := . }}
+      <p> {{ $homepage.Id_groupe }} </p>
+      <p> {{ $homepage.Nom_du_groupe }} </p>
+      {{ end }}  
     </form>
-  
   </body> 
 </html>

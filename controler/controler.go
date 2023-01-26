@@ -107,11 +107,6 @@ func Artiste(w http.ResponseWriter, r *http.Request) {
 }
 
 func Recherche(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/Recherche" {
-		http.Error(w, "404 not found", http.StatusNotFound)
-		fmt.Println("404 link not found")
-		return
-	}
 
 	u, err := url.Parse(r.URL.String())
 	if err != nil {
@@ -121,7 +116,7 @@ func Recherche(w http.ResponseWriter, r *http.Request) {
 
 	params := u.Query()
 	id := params.Get("id")
-	page := params.Get("/artists/" + id)
+	page := params.Get("/search?q=" + id)
 	if page == "" {
 		page = "1"
 	}

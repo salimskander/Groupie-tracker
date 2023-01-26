@@ -24,9 +24,9 @@ func main() {
 
 	fs := http.FileServer(http.Dir("Static/HTML/"))
 	http.Handle("/Static/CSS/", http.StripPrefix("/Static/CSS/", fs))
-	http.HandleFunc("/Gestion", GestionHandler)
+	http.HandleFunc("/gestion", GestionHandler)
 	http.HandleFunc("/artiste", controler.Artiste)
-	http.HandleFunc("/Recherche", controler.Recherche)
+	http.HandleFunc("/recherche", controler.Recherche)
 	http.HandleFunc("/", controler.HomePage)
 
 	fmt.Println("(http://localhost:8080/) - Serveur lancé sur le port", port)

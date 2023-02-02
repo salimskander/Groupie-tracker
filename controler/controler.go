@@ -145,6 +145,9 @@ func Recherche(w http.ResponseWriter, r *http.Request) {
 				Result = append(Result, artist)
 				continue
 			}
+			for range artist.Membres {
+
+			}
 
 		}
 		t, err := template.ParseFiles("./Static/HTML/search.html")

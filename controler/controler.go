@@ -104,7 +104,7 @@ func Artiste(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(responseData, &artist)
 	fmt.Println(responseData)
 	fmt.Println(&artist)
-	custTemplate, err := template.ParseFiles("./Static/HTML/artiste.html")
+	custTemplate, err := template.ParseFiles("./Static/HTML/concert.html")
 
 	if err != nil {
 		http.Error(w, "500 no Data sent", http.StatusInternalServerError)

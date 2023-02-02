@@ -42,6 +42,8 @@ type Relation struct {
 	Dates_location map[string][]string `json:"dates_location"`
 }
 
+var Concerts Relations
+
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// ici on récupère l'API
 	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
@@ -76,14 +78,11 @@ func RenderHTML(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, home)
 }
 
-func Artiste(w http.ResponseWriter, r *http.Request) {
+func Concert(w http.ResponseWriter, r *http.Request) {
 
-	// On récupère l'id
 	id := r.URL.Query().Get("id")
 
-	//if !id -> redirect
-
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists/" + id)
+	response, err := http.Get("https://groupietrackers.herokuapp.com/api/relation/" + id)
 
 	if err != nil {
 		http.Error(w, "500 Internal error server", http.StatusInternalServerError)
@@ -99,11 +98,8 @@ func Artiste(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// autrechoses = 1 Artiste
-
-	json.Unmarshal(responseData, &artist)
-	fmt.Println(responseData)
-	fmt.Println(&artist)
+	json.Unmarshal(responseData, &Concerts)
+	fmt.Println(Concerts)
 	custTemplate, err := template.ParseFiles("./Static/HTML/concert.html")
 
 	if err != nil {
@@ -112,7 +108,7 @@ func Artiste(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	custTemplate.Execute(w, &artist)
+	custTemplate.Execute(w, &Concerts)
 
 }
 

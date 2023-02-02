@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"strings"
 	"text/template"
 )
 
@@ -127,24 +129,30 @@ func Recherche(w http.ResponseWriter, r *http.Request) {
 		}
 		input := r.FormValue("query")
 		for _, artist := range Search {
-			if input == artist.Nom_du_groupe {
-				
+			if input == strings.ToLower(artist.Nom_du_groupe) || input == artist.Nom_du_groupe {
 				Result = append(Result, artist)
 				continue
 			}
-			if input == artist.PremierAlbum {
+			if input == strings.ToLower(artist.PremierAlbum) || input == artist.PremierAlbum {
 				Result = append(Result, artist)
 				continue
 			}
-		}
+			if input == strconv.Itoa(artist.Id_groupe) {
+				Result = append(Result, artist)
+				continue
+			}
+			if input == strconv.Itoa(artist.Creation) {
+				Result = append(Result, artist)
+				continue
+			}
 
-		t, err := template.ParseFiles("./Static/HTML/artiste.html")
+		}
+		t, err := template.ParseFiles("./Static/HTML/search.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 		t.Execute(w, Result)
-
 	} else {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		return

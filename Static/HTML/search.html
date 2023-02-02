@@ -14,7 +14,7 @@
       </header>
       <form>
         {{ range $searchpage := .}}
-        {{ $searchpage.Image }}
+        <img src="{{ $searchpage.Image }}" alt="" srcset="">
         {{ $searchpage.Nom_du_groupe }}
         {{ $searchpage.Creation }}
         {{ $searchpage.PremierAlbum }}

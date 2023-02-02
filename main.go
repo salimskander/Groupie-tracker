@@ -22,8 +22,8 @@ func GestionHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	fs := http.FileServer(http.Dir("Static/HTML/"))
-	http.Handle("/Static/CSS/", http.StripPrefix("/Static/CSS/", fs))
+	fs := http.FileServer(http.Dir("Static/"))
+	http.Handle("/Static/", http.StripPrefix("/Static/", fs))
 	http.HandleFunc("/gestion", GestionHandler)
 	http.HandleFunc("/artiste", controler.Artiste)
 	http.HandleFunc("/recherche", controler.Recherche)

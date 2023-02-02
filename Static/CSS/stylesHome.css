@@ -15,7 +15,17 @@ body {
     padding: 20px;
     font-size: 18px;
   }
+  .navbar {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
   
+  
+  
+
   
 
   

@@ -22,6 +22,16 @@ body {
     align-items: center;
     height: 50px;
   }
+  .group-card {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+  }
+  
+  .clearfix {
+    clear: both;
+  }
+  
   
   
   

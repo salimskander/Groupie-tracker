@@ -16,14 +16,13 @@
     <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
     <form>
     {{ range $homepage := . }}
-      <p> {{ $homepage.Id_groupe }} </p>
       <p> {{ $homepage.Nom_du_groupe }} </p>
+      <img src="{{ $homepage.Image }}" alt="" srcset="">
       {{ end }}  
     </form>
   </body> 
 </html>
   
-
 <body>
   <header>
     <nav class="navbar">

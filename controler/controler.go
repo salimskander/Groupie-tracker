@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/url"
 	"os"
 	"text/template"
 )
@@ -19,18 +18,18 @@ type Accueil struct {
 
 var home []Accueil
 
-type Artists struct {
+type Artist struct {
 	Id_groupe     int      `json:"id"`
 	Image         string   `json:"image"`
 	Nom_du_groupe string   `json:"name"`
 	Membres       []string `json:"members"`
 	Creation      int      `json:"creationDate"`
 	PremierAlbum  string   `json:"firstAlbum"`
-	Locations     []string `json:"locations"`
-	Dates         []string `json:"dates"`
+	Locations     string   `json:"locations"`
+	Dates         string   `json:"dates"`
 }
 
-var artist Artists
+var artist Artist
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// ici on récupère l'API
@@ -107,20 +106,46 @@ func Artiste(w http.ResponseWriter, r *http.Request) {
 }
 
 func Recherche(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
+		if err != nil {
+			fmt.Print(err.Error())
+			os.Exit(1)
+		}
 
-	u, err := url.Parse(r.URL.String())
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		responseData, err := ioutil.ReadAll(response.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		var Search []Artist
+		var Result []Artist
+
+		err = json.Unmarshal(responseData, &Search)
+		if err != nil {
+			panic(err)
+		}
+		input := r.FormValue("query")
+		for _, artist := range Search {
+			if input == artist.Nom_du_groupe {
+				Result = append(Result, artist)
+				continue
+			}
+			if input == artist.PremierAlbum {
+				Result = append(Result, artist)
+				continue
+			}
+		}
+
+		t, err := template.ParseFiles("./Static/HTML/artiste.html")
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		t.Execute(w, Result)
+
+	} else {
+		w.WriteHeader(http.StatusMethodNotAllowed)
 		return
 	}
-
-	params := u.Query()
-	id := params.Get("id")
-	page := params.Get("/search?q=" + id)
-	if page == "" {
-		page = "1"
-	}
-
-	fmt.Println("Artiste : ", page)
-
 }

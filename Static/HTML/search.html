@@ -2,22 +2,25 @@
 <html>
   <head>
         <title>Groupie-tracker</title>
-        <link rel="stylesheet" href="/Static/CSS/stylesHome.css">
+        <link rel="stylesheet" href="/Static/CSS/stylesSearch.css">
   </head>
   <body>
     <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
       <header>
-        <a class="logo" href="/artiste">artiste</a>
+        <a class="logo" href="/recherche">artiste</a>
         <form action="/recherche" method="post">
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
           <button type="submit">search</button>
         </form>
       </header>
       <form>
-      {{ range $homepage := . }}
-      <p> {{ $homepage.Id_groupe }} </p>
-      <p> {{ $homepage.Nom_du_groupe }} </p>
-      {{ end }}  
+        {{ .Image }}
+        {{ .Nom_du_groupe }}
+        {{ .Creation }}
+        {{ .PremierAlbum }}
+        {{ range $Membre := .Membres }}
+        {{ $Membre}}
+        {{ end }}  
     </form>
   </body> 
 </html>

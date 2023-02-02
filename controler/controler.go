@@ -33,16 +33,12 @@ type Artist struct {
 
 var artist Artist
 
-type Relations struct {
-	Index []Relation `json:"index"`
-}
-
 type Relation struct {
 	Id_groupe      int                 `json:"id"`
-	Dates_location map[string][]string `json:"dates_location"`
+	Dates_location map[string][]string `json:"datesLocations"`
 }
 
-var Concerts Relations
+var Concerts Relation
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// ici on récupère l'API

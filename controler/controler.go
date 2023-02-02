@@ -33,6 +33,15 @@ type Artist struct {
 
 var artist Artist
 
+type Relations struct {
+	Index []Relation `json:"index"`
+}
+
+type Relation struct {
+	Id_groupe      int                 `json:"id"`
+	Dates_location map[string][]string `json:"dates_location"`
+}
+
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// ici on récupère l'API
 	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
@@ -144,6 +153,12 @@ func Recherche(w http.ResponseWriter, r *http.Request) {
 			if input == strconv.Itoa(artist.Creation) {
 				Result = append(Result, artist)
 				continue
+			}
+			for _, membres := range artist.Membres {
+				if input == strings.ToLower(membres) || input == membres {
+					Result = append(Result, artist)
+					continue
+				}
 			}
 
 		}

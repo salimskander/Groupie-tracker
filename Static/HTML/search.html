@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/Static/CSS/stylesSearch.css">
   </head>
   <body>
-    <h1>Bienvenue sur la page de recherche de Groupie-tracker</h1>
+    <h1>Bienvenue sur la page de votre groupe préféré !</h1>
       <header>
         <form action="/recherche" method="post">
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
@@ -14,7 +14,7 @@
       </header>
       <form>
         {{ range $searchpage := .}}
-        {{ $searchpage.Image }}
+        <img src="{{ $searchpage.Image }}" alt="" srcset="">
         {{ $searchpage.Nom_du_groupe }}
         {{ $searchpage.Creation }}
         {{ $searchpage.PremierAlbum }}

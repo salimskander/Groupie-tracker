@@ -128,6 +128,7 @@ func Recherche(w http.ResponseWriter, r *http.Request) {
 		input := r.FormValue("query")
 		for _, artist := range Search {
 			if input == artist.Nom_du_groupe {
+				
 				Result = append(Result, artist)
 				continue
 			}

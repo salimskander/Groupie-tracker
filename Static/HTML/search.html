@@ -5,21 +5,20 @@
         <link rel="stylesheet" href="/Static/CSS/stylesSearch.css">
   </head>
   <body>
-    <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
+    <h1>Bienvenue sur la page de recherche de Groupie-tracker</h1>
       <header>
-        <a class="logo" href="/recherche">artiste</a>
         <form action="/recherche" method="post">
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
           <button type="submit">search</button>
         </form>
       </header>
       <form>
-        {{ .Image }}
-        {{ .Nom_du_groupe }}
-        {{ .Creation }}
-        {{ .PremierAlbum }}
-        {{ range $Membre := .Membres }}
-        {{ $Membre}}
+        {{ range $searchpage := .}}
+        {{ $searchpage.Image }}
+        {{ $searchpage.Nom_du_groupe }}
+        {{ $searchpage.Creation }}
+        {{ $searchpage.PremierAlbum }}
+        {{ $searchpage.Membres}}
         {{ end }}  
     </form>
   </body> 

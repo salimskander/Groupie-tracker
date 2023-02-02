@@ -1,24 +1,41 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-  }
-  
-  h1 {
-    color: #333;
-    text-align: center;
-  }
-  
-  p {
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.5;
-    padding: 20px;
-    font-size: 18px;
-  }
-  
-  
 
+  /* Définition des couleurs de base */
+  :root {
+    --primary-color: #CC8B65;
+    --secondary-color: #013328;
+    --text-color: #100c0d;
+    --background-color: #ecf2f1;
   
+  }
   
+  /* Appliquer la couleur de base aux liens */
+  a {
+    color: var(--primary-color);
+  }
   
+  /* Appliquer une couleur de fond aux en-têtes */
+  h1, h2, h3, h4, h5, h6 {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+  }
   
+  /* Centrer le contenu de la page */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Appliquer un style de base aux paragraphes */
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+    
+    
+    
+    
+    
+    
+    

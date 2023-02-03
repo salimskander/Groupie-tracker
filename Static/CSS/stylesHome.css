@@ -16,7 +16,6 @@ body {
     font-size: 18px;
   }
   .navbar {
-    background-color: grey;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,13 +30,34 @@ body {
   .clearfix {
     clear: both;
   }
+ 
+  .navbar {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 120%;
+    margin-right: 20px;
+  }
+  .navbar form {
+    display: inline-block;
+    margin-right: 50px;
+  }
   
+    
+  .navbar a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 50px;
+  }
   
-  
-  
-
-  
-
+  .navbar button {
+    background-color: darkblue;
+    color: white;
+  }
   
   
   

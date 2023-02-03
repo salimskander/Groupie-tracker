@@ -10,10 +10,14 @@
 <body>
 <h1>Retrouvez vos artistes en Concert ! </h1>
   <form>
-    {{ range $concertpage := .}}
-    <img src="{{ $concertpage.Image }}" alt="" srcset="">
-    {{ $concertpage.Nom_du_groupe }}
-    {{ $concertpage.Relation}}
+
+    {{ range $concertpage := . }}
+    
+    <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
+    {{ $concertpage.Groupes.Nom_du_groupe }}    
+    {{ end }}    
+    {{ range $concertrelation := .}}
+    {{ $concertrelation.Relations.Dateslocations }}
     {{ end}}
   </form>  
 </body>

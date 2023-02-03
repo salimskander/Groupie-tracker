@@ -27,18 +27,18 @@ type Artist struct {
 	Membres       []string `json:"members"`
 	Creation      int      `json:"creationDate"`
 	PremierAlbum  string   `json:"firstAlbum"`
-	Locations     string   `json:"locations"`
-	Dates         string   `json:"dates"`
 }
-
-var artist Artist
 
 type Relation struct {
-	Id_groupe      int                 `json:"id"`
-	Dates_location map[string][]string `json:"datesLocations"`
+	Dateslocations map[string][]string `json:"datesLocations"`
 }
 
-var Concerts Relation
+type Concertlist struct {
+	Groupes   Accueil
+	Relations Relation
+}
+
+var liste []Concertlist
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// ici on récupère l'API
@@ -76,35 +76,68 @@ func RenderHTML(w http.ResponseWriter, r *http.Request) {
 
 func Concert(w http.ResponseWriter, r *http.Request) {
 
-	id := r.URL.Query().Get("id")
+	for id := 1; id < 53; id++ {
 
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/relation/" + id)
+		var dataRelations Relation
+		var dataGroupes Accueil
+		var data Concertlist
 
-	if err != nil {
-		http.Error(w, "500 Internal error server", http.StatusInternalServerError)
-		fmt.Println("Erreur 500")
-		return
+		response, err := http.Get("https://groupietrackers.herokuapp.com/api/relation/" + strconv.Itoa(id) + "")
+		if err != nil {
+			http.Error(w, "500 Internal error server", http.StatusInternalServerError)
+			fmt.Println("Erreur Impossible a Get")
+			return
+		}
+		responseData, err := ioutil.ReadAll(response.Body)
+		if err != nil {
+			http.Error(w, "500 No data sent", http.StatusInternalServerError)
+			fmt.Println("Erreur ioutil.ReadAll")
+			return
+		}
+		err = json.Unmarshal(responseData, &dataRelations)
+		if err != nil {
+			http.Error(w, "Umarhal problem : ---->", http.StatusInternalServerError)
+			fmt.Println("Erreur Unmarshall dataRelation", err)
+			return
+		}
+
+		demande, err := http.Get("https://groupietrackers.herokuapp.com/api/artists/" + strconv.Itoa(id) + "")
+		if err != nil {
+			http.Error(w, "500 Internal error server", http.StatusInternalServerError)
+			fmt.Println("Erreur Impossible a Get artists")
+			return
+		}
+
+		demandeData, err := ioutil.ReadAll(demande.Body)
+		if err != nil {
+			http.Error(w, "500 No data sent", http.StatusInternalServerError)
+			fmt.Println("Erreur ioutil.ReadAllArtists")
+			return
+		}
+
+		err = json.Unmarshal(demandeData, &dataGroupes)
+		if err != nil {
+			http.Error(w, "Umarshal problem : ->", http.StatusInternalServerError)
+			fmt.Println("Erreur Unmarshall dataConcertlist", err)
+			return
+		}
+
+		data.Groupes = dataGroupes
+		data.Relations = dataRelations
+		liste = append(liste, data)
+		// fmt.Println(data)
+
 	}
 
-	responseData, err := ioutil.ReadAll(response.Body)
-
-	if err != nil {
-		http.Error(w, "500 No data sent", http.StatusInternalServerError)
-		fmt.Println("Erreur 500")
-		return
-	}
-
-	json.Unmarshal(responseData, &Concerts)
-	fmt.Println(Concerts)
 	custTemplate, err := template.ParseFiles("./Static/HTML/concert.html")
 
 	if err != nil {
 		http.Error(w, "500 no Data sent", http.StatusInternalServerError)
-		fmt.Println("Erreur 500")
+		fmt.Println("=Erreur 500", err)
 		return
 	}
 
-	custTemplate.Execute(w, &Concerts)
+	custTemplate.Execute(w, &liste)
 
 }
 

@@ -25,7 +25,7 @@ func main() {
 	fs := http.FileServer(http.Dir("Static/"))
 	http.Handle("/Static/", http.StripPrefix("/Static/", fs))
 	http.HandleFunc("/gestion", GestionHandler)
-	http.HandleFunc("/concerts", controler.Concert)
+	http.HandleFunc("/concert", controler.Concert)
 	http.HandleFunc("/recherche", controler.Recherche)
 	http.HandleFunc("/", controler.HomePage)
 

@@ -27,7 +27,7 @@ func main() {
 	http.HandleFunc("/gestion", GestionHandler)
 	http.HandleFunc("/concert", controler.Concert)
 	http.HandleFunc("/recherche", controler.Recherche)
-	http.HandleFunc("/", controler.HomePage)
+	http.HandleFunc("/home", controler.HomePage)
 
 	fmt.Println("(http://localhost:8080/) - Serveur lancé sur le port", port)
 	if err := http.ListenAndServe(port, nil); err != nil {

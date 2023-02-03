@@ -11,10 +11,11 @@
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
           <button type="submit">search</button>
         </form>
+        <a href="/home">Home</a>
+        <a href="/concert">Concerts</a>
       </nav>
     </header>
     <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
-    <button onclick="window.location.href = '/concert';">Concerts</button>
     <form>
       {{ range $index, $homepage := . }}
         <div class="group-card">

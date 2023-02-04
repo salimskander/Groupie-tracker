@@ -14,19 +14,19 @@
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
           <button type="submit">search</button>
         </form>
-        <a href="/concert">Concerts</a>
+        <a class="concert-button" href="/concert">Concerts</a>
       </nav>
     </header>
-    <form>
+    <main>
       {{ range $index, $homepage := . }}
         <div class="group-card">
           <p> {{ $homepage.Nom_du_groupe }} </p>
-          <img src="{{ $homepage.Image }}" alt="" srcset="">
+          <img class="groupimage" src="{{ $homepage.Image }}" alt="" srcset="">
         </div>
         {{ if eq $index 2 }}
           <div class="clearfix"></div>
         {{ end }}
       {{ end }}  
-    </form>       
+    </main>       
   </body> 
 </html>

@@ -7,15 +7,16 @@
   <body>
     <header>
       <nav class="navbar">
+        <a href="/">
+          <h1 class="header-title">GroupieTracker</h1>
+        </a>
         <form action="/recherche" method="post">
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
           <button type="submit">search</button>
         </form>
-        <a href="/">Home</a>
         <a href="/concert">Concerts</a>
       </nav>
     </header>
-    <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
     <form>
       {{ range $index, $homepage := . }}
         <div class="group-card">

@@ -1,64 +1,75 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-  }
-  
-  h1 {
-    color: #333;
-    text-align: center;
-  }
-  
-  p {
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.5;
-    padding: 20px;
-    font-size: 18px;
-  }
-  .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-  }
-  .group-card {
-    width: 33.33%;
-    float: left;
-    text-align: center;
-  }
-  
-  .clearfix {
-    clear: both;
-  }
- 
-  .navbar {
-    background-color: black;
-    position: fixed;
-    top: 0;
-    width: 120%;
-    margin-right: 20px;
-  }
-  .navbar form {
-    display: inline-block;
-    margin-right: 50px;
-  }
-  
-    
-  .navbar a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    display: inline-block;
-    border-radius: 25px;
-    background-color: rgb(255, 255, 255);
-    margin-right: 50px;
-  }
-  
-  .navbar button {
-    background-color: darkblue;
-    color: white;
-  }
-  
-  
-  
-  
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  margin-top: 50px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-right: auto;
+  margin-left: 50px;
+  font-size: 18px;
+}
+
+p {
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.5;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.header-title {
+
+  margin-left: 90px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar form {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 1px;
+  background-color: transparent;
+  margin-right: 50px;
+}
+
+.navbar button {
+  background-color: grey;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.group-card {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+.group-card:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 10px #ccc;
+  transition: all 0.2s ease-in-out;
+}
+
+.clearfix {
+  clear: both;
+}

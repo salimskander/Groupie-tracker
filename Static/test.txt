@@ -1,30 +1,77 @@
-<!DOCTYPE html>
-<html>
-  <head>
-        <title>Groupie-tracker</title>
-        <link rel="stylesheet" href="/Static/CSS/stylesHome.css">
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <form action="/recherche" method="post">
-          <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
-          <button type="submit">search</button>
-        </form>
-      </nav>
-    </header>
-    <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
-    <button onclick="window.location.href = '/concert';">Concerts</button>
-    <form>
-      {{ range $index, $homepage := . }}
-        <div class="group-card">
-          <p> {{ $homepage.Nom_du_groupe }} </p>
-          <img src="{{ $homepage.Image }}" alt="" srcset="">
-        </div>
-        {{ if eq $index 2 }}
-          <div class="clearfix"></div>
-        {{ end }}
-      {{ end }}  
-    </form>       
-  </body> 
-</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin-top: 50px;
+  }
+  
+  h1 {
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+  
+  p {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.5;
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .header-title {
+    float: left;
+    margin-right: 60px;
+    margin-left: 90px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+  }
+  .search {
+    justify-content: center;
+
+  }
+  .group-card {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+  }
+  
+  .clearfix {
+    clear: both;
+  }
+ 
+  .navbar {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 120%;
+    margin-right: 20px;
+  }
+  .navbar form {
+    display: inline-block;
+    margin-right: 50px;
+    margin-left: 200px;
+  }
+  
+    
+  .navbar a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 50px;
+  }
+  
+  .navbar button {
+    background-color: grey;
+    color: white;
+  }
+  
+  
+  
+  

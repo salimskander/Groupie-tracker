@@ -1,36 +1,36 @@
 
-  /* Définition des couleurs de base */
-:root {
-  --primary-color: #CC8B65;
-  --secondary-color: #013328;
-  --text-color: #100c0d;
-  --background-color: #ecf2f1;
-
-}
-
-/* Appliquer la couleur de base aux liens */
-a {
-  color: var(--primary-color);
-}
-
-/* Appliquer une couleur de fond aux en-têtes */
-h1, h2, h3, h4, h5, h6 {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
-}
-
 /* Centrer le contenu de la page */
 .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
 }
+.navbar {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 120%;
+  margin-right: 20px;
+}
+.navbar form {
+  display: inline-block;
+  margin-right: 50px;
+}
 
-/* Appliquer un style de base aux paragraphes */
-p {
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--text-color);
+  
+.navbar a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 25px;
+  background-color: transparent;
+  margin-right: 50px;
+}
+
+.navbar button {
+  background-color: grey;
+  color: white;
 }
 
   

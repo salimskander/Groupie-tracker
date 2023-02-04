@@ -6,9 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Groupie-tracker</title>
   <link rel="stylesheet" href="Static/CSS/stylesConcert.css">
+  <link rel="stylesheet" href="Static/CSS/stylesHome.css">
+
 </head>
 <body>
-<h1>Retrouvez vos artistes en Concert ! </h1>
+  <header>
+    <nav class="navbar">
+      <a href="/">
+        <h1 class="header-title">GroupieTracker</h1>
+      </a>
+      <form action="/recherche" method="post">
+        <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
+        <button type="submit">search</button>
+      </form>
+      <a href="/concert">Concerts</a>
+    </nav>
+</header>
   <form>
 
     {{ range $concertpage := . }}

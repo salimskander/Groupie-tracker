@@ -12,9 +12,8 @@
   <form>
 
     {{ range $concertpage := . }}
-    
+    {{ $concertpage.Groupes.Nom_du_groupe }}
     <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
-    {{ $concertpage.Groupes.Nom_du_groupe }}    
     {{ end }}    
     {{ range $concertrelation := .}}
     {{ $concertrelation.Relations.Dateslocations }}

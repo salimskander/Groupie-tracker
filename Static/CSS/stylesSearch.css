@@ -1,6 +1,4 @@
 
-
-
   
   /* Centrer le contenu de la page */
   .container {
@@ -42,6 +40,50 @@
     background-color: grey;
     color: white;
   }
+  .group-info {
+    display: flex;
+    align-items: center;
+    float: left;
+    width: 100%;
+    background-color: rgb(179, 179, 179);
+  }
+  .group-info p {
+    color: rgb(0, 0, 0);
+  }
+  
+  .group-details {
+    margin-left: 60px;
+    float: left;
+  }
+  
+  img {
+    float: left;
+  }
+  .fichetech {
+    margin-left: 200px;
+    background-color: rgb(220, 220, 220);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fichetech img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .fichetech p {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  
+  
+  
     
     
     

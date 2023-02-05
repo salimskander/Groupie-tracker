@@ -20,14 +20,21 @@
       </header>
       <form>
         {{ range $searchpage := .}}
-        <img src="{{ $searchpage.Image }}" alt="" srcset="">
-        {{ $searchpage.Nom_du_groupe }}
-        {{ $searchpage.Creation }}
-        {{ $searchpage.PremierAlbum }}
-        {{ $searchpage.Membres}}
-        {{ $searchpage.Locations}}
-        {{ $searchpage.ConcertDates }}
-        {{ end }}  
-    </form>
+          <div class="group-info">
+            <img src="{{ $searchpage.Image }}" alt="" srcset="">
+            <div class="group-details">
+              <div class="fichetech">
+                <p>Fiche technique</p>
+              </div>
+              <p>Nom: {{ $searchpage.Nom_du_groupe }}</p>
+              <p>Creation: {{ $searchpage.Creation }}</p>
+              <p>Premier album: {{ $searchpage.PremierAlbum }}</p>
+              <p>Membres: {{ $searchpage.Membres }}</p>
+              <p>Lieu: {{ $searchpage.Locations }}</p>
+              <p>Dates: {{ $searchpage.ConcertDates }}</p>
+            </div>
+          </div>
+        {{ end }}
+      </form>  
   </body> 
 </html>

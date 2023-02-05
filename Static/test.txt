@@ -1,77 +1,31 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-    margin-top: 50px;
-  }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Groupie-tracker</title>
+  <link rel="stylesheet" href="Static/CSS/stylesConcert.css">
+  <link rel="stylesheet" href="Static/CSS/stylesHome.css">
   
-  h1 {
-    color: rgb(0, 0, 0);
-    text-align: center;
-  }
-  
-  p {
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.5;
-    padding: 20px;
-    font-size: 18px;
-  }
-
-  .header-title {
-    float: left;
-    margin-right: 60px;
-    margin-left: 90px;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    height: 50px;
-  }
-  .search {
-    justify-content: center;
-
-  }
-  .group-card {
-    width: 33.33%;
-    float: left;
-    text-align: center;
-  }
-  
-  .clearfix {
-    clear: both;
-  }
- 
-  .navbar {
-    background-color: black;
-    position: fixed;
-    top: 0;
-    width: 120%;
-    margin-right: 20px;
-  }
-  .navbar form {
-    display: inline-block;
-    margin-right: 50px;
-    margin-left: 200px;
-  }
-  
-    
-  .navbar a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    display: inline-block;
-    border-radius: 25px;
-    background-color: rgb(255, 255, 255);
-    margin-right: 50px;
-  }
-  
-  .navbar button {
-    background-color: grey;
-    color: white;
-  }
-  
-  
-  
-  
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/">
+        <h1 class="header-title">GroupieTracker</h1>
+      </a>
+      <a href="/concert">Concerts</a>
+    </nav>
+</header>
+  <form>
+    {{ range $concertpage := . }}
+      <div class="group-info">
+        <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
+        <p>{{ $concertpage.Groupes.Nom_du_groupe }}</p>
+        <p>{{ $concertpage.Relations.Dateslocations }}</p>
+      </div>
+    {{ end }}
+  </form>  
+</body>
+</html>

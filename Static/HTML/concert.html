@@ -20,12 +20,12 @@
 </header>
   <form>
     {{ range $concertpage := . }}
-      <div class="group-info">
-        <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
-        <p>{{ $concertpage.Groupes.Nom_du_groupe }}</p>
-        <p>{{ $concertpage.Relations.Dateslocations }}</p>
-      </div>
-    {{ end }}
+    {{ $concertpage.Groupes.Nom_du_groupe }}
+    <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
+    {{ end }}    
+    {{ range $concertrelation := .}}
+    {{ $concertrelation.Relations.Dateslocations }}
+    {{ end}}
   </form>  
 </body>
 </html>

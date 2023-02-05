@@ -7,7 +7,7 @@
   <title>Groupie-tracker</title>
   <link rel="stylesheet" href="Static/CSS/stylesConcert.css">
   <link rel="stylesheet" href="Static/CSS/stylesHome.css">
-
+  
 </head>
 <body>
   <header>
@@ -23,16 +23,13 @@
     </nav>
 </header>
   <form>
-
     {{ range $concertpage := . }}
-    
-    <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
-    {{ $concertpage.Groupes.Nom_du_groupe }}    
-    {{ end }}    
-    {{ range $concertrelation := .}}
-    {{ $concertrelation.Relations.Dateslocations }}
-    {{ end}}
+      <div class="group-info">
+        <img src="{{ $concertpage.Groupes.Image }}" alt="" srcset="">
+        <p>{{ $concertpage.Groupes.Nom_du_groupe }}</p>
+        <p>{{ $concertpage.Relations.Dateslocations }}</p>
+      </div>
+    {{ end }}
   </form>  
 </body>
 </html>
-

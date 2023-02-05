@@ -1,37 +1,60 @@
 
-  /* Définition des couleurs de base */
-:root {
-  --primary-color: #CC8B65;
-  --secondary-color: #013328;
-  --text-color: #100c0d;
-  --background-color: #ecf2f1;
-
-}
-
-/* Appliquer la couleur de base aux liens */
-a {
-  color: var(--primary-color);
-}
-
-/* Appliquer une couleur de fond aux en-têtes */
-h1, h2, h3, h4, h5, h6 {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
-}
-
 /* Centrer le contenu de la page */
 .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
 }
-
-/* Appliquer un style de base aux paragraphes */
-p {
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--text-color);
+.navbar {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 120%;
+  margin-right: 20px;
 }
+.navbar form {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+  
+.navbar a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 25px;
+  background-color: transparent;
+  margin-right: 50px;
+}
+
+.navbar button {
+  background-color: grey;
+  color: white;
+}
+.group-info:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.group-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: transform 0s ease;
+}
+
+.group-info img {
+  width: 120px;
+  height: 120px;
+  margin-right: 40px;
+}
+
+
+
 
   
   

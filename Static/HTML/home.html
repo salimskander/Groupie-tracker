@@ -7,25 +7,26 @@
   <body>
     <header>
       <nav class="navbar">
+        <a href="/">
+          <h1 class="header-title">GroupieTracker</h1>
+        </a>
         <form action="/recherche" method="post">
           <input autofocus class="search-input" placeholder="Rechercher" type="text" name="query">
           <button type="submit">search</button>
         </form>
-        <a href="/">Home</a>
-        <a href="/concert">Concerts</a>
+        <a class="concert-button" href="/concert">Concerts</a>
       </nav>
     </header>
-    <h1>Bienvenue sur la page d'Accueil de Groupie-tracker</h1>
-    <form>
+    <main>
       {{ range $index, $homepage := . }}
         <div class="group-card">
           <p> {{ $homepage.Nom_du_groupe }} </p>
-          <img src="{{ $homepage.Image }}" alt="" srcset="">
+          <img class="groupimage" src="{{ $homepage.Image }}" alt="" srcset="">
         </div>
         {{ if eq $index 2 }}
           <div class="clearfix"></div>
         {{ end }}
       {{ end }}  
-    </form>       
+    </main>       
   </body> 
 </html>

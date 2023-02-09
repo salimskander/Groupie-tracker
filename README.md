@@ -12,7 +12,7 @@ Le projet se concentre principalement sur l'élaboration d'un site répertoriant
 
 ### Plus d'explications : 
 
- * Premièrement : vous devrez cloner le "répo" (respository) ou dossier du programme sur notre [Github](https://github.com/salimskander/Groupie-tracker.git).
+ * Premièrement : vous devrez [cloner](https://github.com/salimskander/Groupie-tracker.git) le "répo" (respository) ou dossier du programme sur notre Github.
     * Ouvrez votre terminal et tapez : git clone (URL du répo - ci-dessus)
  * Dans un second temps, vous devrez taper la commande suivante afin de démarrer le serveur : go run main.go
  * Une fois tapée vous pourrez constater un message d'annonce de démarrage du serveur accompagné d'un lien vers le site. Maintenez Ctrl et cliquez. 
